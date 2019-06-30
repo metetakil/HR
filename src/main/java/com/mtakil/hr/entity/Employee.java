@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Employee extends BaseEntity {
@@ -19,6 +23,12 @@ public class Employee extends BaseEntity {
 	
 	private LocalDate birthDate;
 	
+	@ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "Employee_Project", 
+        joinColumns = { @JoinColumn(name = "employee_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "project_id") }
+    )
 	private Set<Project> projectList = new HashSet<Project>();
 	
 	private List<Contact> contactList = new ArrayList<Contact>();

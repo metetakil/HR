@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Project extends BaseEntity {
@@ -12,6 +13,7 @@ public class Project extends BaseEntity {
 	
 	private Long budget;
 	
+	@ManyToMany(mappedBy = "projectList")
 	private Set<Employee> employeeList = new HashSet<Employee>();
 	
 	public String getProjectName() {
