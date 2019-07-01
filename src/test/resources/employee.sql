@@ -1,0 +1,1 @@
+insert into employee(id, tcno, first_name, last_name, birth_date) values(1, '19315957022', 'Mete', 'Takil', '1979-08-22');

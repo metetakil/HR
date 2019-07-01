@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employee extends BaseEntity {
@@ -31,7 +32,8 @@ public class Employee extends BaseEntity {
     )
 	private Set<Project> projectList = new HashSet<Project>();
 	
-	private List<Contact> contactList = new ArrayList<Contact>();
+	@OneToMany(mappedBy = "employee")
+	private List<EmailContact> contactList = new ArrayList<EmailContact>();
 	
 	public String getTcno() {
 		return tcno;
@@ -73,11 +75,11 @@ public class Employee extends BaseEntity {
 		this.projectList = projectList;
 	}
 
-	public List<Contact> getContactList() {
+	public List<EmailContact> getContactList() {
 		return contactList;
 	}
 
-	public void setContactList(List<Contact> contactList) {
+	public void setContactList(List<EmailContact> contactList) {
 		this.contactList = contactList;
 	}
 
