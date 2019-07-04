@@ -5,7 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+//@Entity
 public class PhoneContact extends Contact {
 
 	@ManyToOne(fetch = FetchType.LAZY)

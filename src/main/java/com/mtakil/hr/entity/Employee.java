@@ -1,5 +1,6 @@
 package com.mtakil.hr.entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ public class Employee extends BaseEntity {
 	
 	private String lastName;
 	
-	private LocalDate birthDate;
+	private Date birthDate;
 	
 	@ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -31,10 +32,10 @@ public class Employee extends BaseEntity {
         inverseJoinColumns = { @JoinColumn(name = "project_id") }
     )
 	private Set<Project> projectList = new HashSet<Project>();
-	
+	/*
 	@OneToMany(mappedBy = "employee")
 	private List<EmailContact> contactList = new ArrayList<EmailContact>();
-	
+	*/
 	public String getTcno() {
 		return tcno;
 	}
@@ -59,11 +60,11 @@ public class Employee extends BaseEntity {
 		this.lastName = lastName;
 	}
 
-	public LocalDate getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -74,7 +75,7 @@ public class Employee extends BaseEntity {
 	public void setProjectList(Set<Project> projectList) {
 		this.projectList = projectList;
 	}
-
+/*
 	public List<EmailContact> getContactList() {
 		return contactList;
 	}
@@ -82,7 +83,7 @@ public class Employee extends BaseEntity {
 	public void setContactList(List<EmailContact> contactList) {
 		this.contactList = contactList;
 	}
-
+*/
 	@Override
 	public String toString() {
 		return String.format("Person id: %s, tcno: %s, firstName: %s, lastName: %s, birthDate: %s", 

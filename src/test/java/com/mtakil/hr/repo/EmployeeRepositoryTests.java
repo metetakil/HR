@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,17 @@ public class EmployeeRepositoryTests {
 		Optional<Employee> emp = employeeRepository.findById(7L);
 		assertTrue(emp.isPresent());
 		assertTrue(emp.get().getId() == 7);
+		assertTrue(emp.get().getFirstName().equals("Mete"));
+	}
+	
+	@Test
+	@Transactional
+	public void testEmployees_Projects() {
+		Optional<Employee> emp = employeeRepository.findById(7L);
+		assertTrue(emp.isPresent());
+		assertTrue(emp.get().getFirstName().equals("Mete"));
+		assertTrue(emp.get().getProjectList().size() == 1);
+		assertTrue(emp.get().getProjectList().stream().findFirst().get().getProjectName().equals("Some project"));
 	}
 	
 }
