@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mtakil.hr.service.KPSSQueryService;
 
 
-
 @RestController
 public class DenemeController {
 
